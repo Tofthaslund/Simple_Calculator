@@ -35,16 +35,22 @@ function runGame(gameType){
 
    let num1 = Math.floor(Math.random() *25 ) +1;
    let num2 = Math.floor(Math.random() *25 ) +1;
+    
+   let a = Math.floor(Math.random() * 12) + 1;
+   let b = Math.floor(Math.random() * 12) + 1;
+   let numD1 = (a * b);
+   let numD2 = b;
+   
 
    if (gameType === "addition"){
        displayAdditionQuestion(num1, num2);
    }else if (gameType === "multiply"){
         displayMultiplyQuestion(num1, num2);
    }else if (gameType === "subtract"){
-       displaySubtractQuestion(num1, num2)
-   }else if (gameType === "division"){
-       displayDivisionQuestion(num1, num2)
-   }else {
+       displaySubtractQuestion(num1, num2);
+   }else if (gameType === "division"){   
+        displayDivisionQuestion(numD1, numD2);
+     }else {
        alert(`Unknown game type ${gameType}`);
        throw `unknown game type ${gameType}, aborting`;
    }
@@ -86,7 +92,7 @@ function calculateCorrectAnswer(){
     }else if (operator === "x"){
         return [operand1 * operand2, "multiply"];
     }else if (operator === "/"){
-        return [(operand1 / operand2), (operand2 / operand1),  "division"]
+        return [parseInt(operand1 / operand2),"division"]
     }else{
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}, aborting`;
